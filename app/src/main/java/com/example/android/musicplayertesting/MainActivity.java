@@ -1,6 +1,7 @@
 package com.example.android.musicplayertesting;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -12,6 +13,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         String[] projection={
                 MediaStore.Audio.AudioColumns.TITLE,
                 MediaStore.Audio.AudioColumns.DATA,
-                MediaStore.Audio.AudioColumns.ARTIST
+                MediaStore.Audio.AudioColumns.DURATION
         };
         Cursor cursor=context.getContentResolver().query(uri,projection,null,null,null);
         if(cursor!=null){

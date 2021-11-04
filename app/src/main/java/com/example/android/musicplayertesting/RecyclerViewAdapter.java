@@ -29,10 +29,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.textView.setText(list.get(position).getName());
+        holder.textView2.setText(list.get(position).getSinger());
         holder.itemView.setOnClickListener(view -> {
             MediaPlayer player=MediaPlayer.create(view.getContext(), Uri.parse(list.get(position).getPath()));
             if(player.isPlaying()){
-                player.pause();
+                player.stop();
             }else{
                 player.start();
             }
@@ -46,9 +47,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     protected class MyViewHolder extends RecyclerView.ViewHolder{
         TextView textView;
+        TextView textView2;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             textView=itemView.findViewById(R.id.textView);
+            textView2=itemView.findViewById(R.id.textView2);
         }
     }
 }
